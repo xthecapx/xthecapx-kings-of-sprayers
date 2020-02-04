@@ -9,9 +9,6 @@ export const IndexPageTemplate = ({
 }) => (
   <div>
     <div className="full-width-image margin-top-0">{title}</div>
-    <section className="section section--gradient">
-      <div className="container"></div>
-    </section>
   </div>
 );
 
