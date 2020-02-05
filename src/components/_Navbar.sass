@@ -1,0 +1,40 @@
+.navbar
+  height: $custom-navbar-height
+  width: 100%
+  background: transparent
+  position: fixed
+  left: 0
+  top: 0
+
+.navbar-start
+  font-size: 16px
+
+a.navbar-item
+  height: $custom-navbar-height
+  color: white
+  border-bottom: 3px solid transparent
+  padding: 0.5rem 1rem
+
+  &:hover
+    color: $green
+    border-bottom: 3px solid $green
+
+.navbar-menu-container
+  padding: 0 12px
+  position: relative
+
+  .navbar-line
+    background: rgba(0, 0, 0, 0.2)
+    border: 0
+    bottom: 0
+    height: 3px
+    left: 0
+    margin: 0
+    position: absolute
+    width: 100%
+
+.navbar.is-sticky 
+  background: white
+
+  a.navbar-item
+    color: #111360

@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
-import Home, { Jumbotron } from '../components/Home';
+import { Jumbotron } from '../components/Home';
 
 export const IndexPageTemplate = props => {
   const { title, main } = props;
 
   return (
-    <div>
+    <div className="container">
       <Jumbotron {...main} />
       <div className="full-width-image margin-top-0">{title}</div>
     </div>
