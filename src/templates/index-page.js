@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
-import Layout from '../components/Layout';
+import Layout from '../components/Layouts/Main';
 import { Jumbotron } from '../components/Home';
 
 export const IndexPageTemplate = props => {
@@ -11,7 +11,6 @@ export const IndexPageTemplate = props => {
   return (
     <div className="container">
       <Jumbotron {...main} />
-      <div className="full-width-image margin-top-0">{title}</div>
     </div>
   );
 };

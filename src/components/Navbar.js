@@ -5,7 +5,7 @@ import BlueLogo from './Logo/Blue';
 import WhiteLogo from './Logo/White';
 import { UIContext } from '../resources/UI';
 
-const Navbar = () => {
+const Navbar = ({ fixed }) => {
   const [menuStatus, setMenuStatus] = useState({
     active: false,
     navBarActiveClass: ''
@@ -21,10 +21,21 @@ const Navbar = () => {
       };
     });
   };
+  const stickyClass = () => {
+    if (fixed) {
+      return 'is-sticky';
+    }
+
+    if (isSticky) {
+      return 'is-sticky';
+    }
+
+    return '';
+  };
 
   return (
     <nav
-      className={`navbar is-transparent ${isSticky ? 'is-sticky' : ''}`}
+      className={`navbar is-transparent ${stickyClass()}`}
       role="navigation"
       aria-label="main-navigation"
     >
