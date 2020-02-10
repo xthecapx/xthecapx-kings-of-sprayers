@@ -8,11 +8,13 @@ import useSiteMetadata from './SiteMetadata';
 
 import { UIProvider } from '../../resources/UI';
 import './all.sass';
+import Circles from '../Home/Circles';
 
 const TemplateWrapper = ({
   children,
   background = 'bg-jumbotron',
-  navbarFixed
+  navbarFixed,
+  circles
 }) => {
   const { title, description } = useSiteMetadata();
   return (
@@ -56,7 +58,12 @@ const TemplateWrapper = ({
         />
       </Helmet>
       <Navbar fixed={navbarFixed} />
-      <main className={`navbar-gutter ${background}`}>{children}</main>
+      <main
+        className={`navbar-gutter ${background} ${circles ? 'bg-circles' : ''}`}
+      >
+        {circles && <Circles className="circles" />}
+        {children}
+      </main>
       <Footer />
     </UIProvider>
   );

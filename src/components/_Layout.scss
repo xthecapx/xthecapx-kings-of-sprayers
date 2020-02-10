@@ -1,9 +1,20 @@
 .navbar-gutter {
-  padding-top: $custom-navbar-height;
+  padding: 150px 0 70px;
 }
 
 .bg-jumbotron {
   background: url('/img/jumbotron.jpg');
-  background-size: contain;
-  background-repeat: repeat-x;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-circles {
+  position: relative;
+
+  .circles {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    right: 0;
+  }
 }

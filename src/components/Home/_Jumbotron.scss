@@ -1,0 +1,38 @@
+.jumbotron {
+  margin: 0 auto;
+  max-width: 959px;
+}
+
+.jumbotron-title {
+  color: $kos-green;
+  font-size: 73px;
+  font-weight: 900;
+  max-height: 85px;
+}
+
+.jumbotron-subtitle {
+  color: #ffffff;
+  font-size: 41px;
+  font-weight: bold;
+  line-height: 41px;
+  margin-bottom: 8px !important; 
+}
+
+.jumbotron-description {
+  color: #e5e5e5;
+  font-size: 14px;
+  line-height: 21px;
+  margin-bottom: 16px;
+  text-align: right;
+}
+
+.jumbotron-button {
+  background-color: $kos-green-light-btn;
+  border-color: transparent;
+  color: #1b4039;
+  display: flex;
+  font-size: 16px;
+  font-weight: 500;
+  height: 48px;
+  width: 184px;
+}

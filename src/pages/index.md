@@ -8,7 +8,7 @@ main:
   heading: 4 WHEELS
   subheading: Sprayers
   description: >
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bibendum purus morbi quam sit curabitur tellus habitant a ipsum. Ullamcorper et porttitor nisl lectus amet turpis euismod.
   button: View all sprayers
   image1:
     alt: A close-up of a paper filter filled with ground coffee

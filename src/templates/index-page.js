@@ -6,7 +6,7 @@ import Layout from '../components/Layouts/Main';
 import { Jumbotron } from '../components/Home';
 
 export const IndexPageTemplate = props => {
-  const { title, main } = props;
+  const { main } = props;
 
   return (
     <div className="container">
@@ -31,7 +31,7 @@ const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
 
   return (
-    <Layout>
+    <Layout circles>
       <IndexPageTemplate {...frontmatter} />
     </Layout>
   );
