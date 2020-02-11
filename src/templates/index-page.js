@@ -4,13 +4,15 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/Layouts/Main';
 import { Jumbotron } from '../components/Home';
+import { Divider } from '../components/Home/Divider'
 
 export const IndexPageTemplate = props => {
-  const { main } = props;
+  const { main, cards } = props;
 
   return (
     <div className="container">
       <Jumbotron {...main} />
+      <Divider cards={cards} />
     </div>
   );
 };
@@ -63,6 +65,20 @@ export const pageQuery = graphql`
                 }
               }
             }
+          }
+        }
+        cards {
+          quality {
+            title
+            description
+          }
+          dependability {
+            title
+            description
+          }
+          service {
+            title
+            description
           }
         }
       }
