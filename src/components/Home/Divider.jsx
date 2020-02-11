@@ -42,4 +42,6 @@ export const Divider = props => {
   );
 };
 
-Divider.propTypes = {};
+Divider.propTypes = {
+   cards: PropTypes.object
+}
