@@ -7,7 +7,6 @@ export const Jumbotron = props => {
   const { alt = '', image } = image1;
   const imageStyle = { borderRadius: '5px' };
 
-  console.log(image1)
   return (
     <Grid container className="jumbotron" justify='space-between' alignItems='center'>
       <Grid item xs={5}>

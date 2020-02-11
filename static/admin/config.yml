@@ -34,6 +34,8 @@ collections:
 
   - name: 'pages'
     label: 'Pages'
+    editor:
+      preview: false
     files:
       - file: 'src/pages/index.md'
         label: 'Landing Page'

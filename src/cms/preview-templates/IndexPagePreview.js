@@ -5,7 +5,6 @@ import { IndexPageTemplate } from '../../templates/index-page';
 const IndexPagePreview = ({ entry, getAsset }) => {
   const data = entry.getIn(['data']).toJS();
 
-  console.log(data)
   if (data) {
     return (
       <IndexPageTemplate
@@ -19,7 +18,11 @@ const IndexPagePreview = ({ entry, getAsset }) => {
           description: entry.getIn(['data', 'main', 'description']),
           button: entry.getIn(['data', 'main', 'button']),
           image1: {
-            image: getAsset(entry.getIn(['data', 'main', 'image1', 'image'])),
+            image: {
+              childImageSharp: {
+                fluid: entry.getIn(['data', 'main', 'image1', 'image'])
+              }
+            },
             alt: entry.getIn(['data', 'main', 'image1', 'alt'])
           }
         }}
