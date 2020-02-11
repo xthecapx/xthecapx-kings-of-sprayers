@@ -20,7 +20,7 @@ cards:
   dependability:
     title: DEPENDAILITY
     description: Strong network of distributors, dealers and retail outlets Manufacturer of professional spray equipment for more than 30 years Complete line of commercial sprayers
-  servicie:
+  service:
     title: SERVICE
     description: Knowledgeable and friendly Customer Service Technicians available to answer product questions Custom-built sprayers available Commitment to customer satisfaction
 ---
