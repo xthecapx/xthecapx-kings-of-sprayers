@@ -1,34 +1,45 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
 import Layout from '../components/Layouts/Main';
+import OurDealers from '../components/Dealers/OurDealers';
+import Services from '../components/Services/Services';
 import { Jumbotron } from '../components/Home';
-import { Divider } from '../components/Home/Divider'
+import { Divider } from '../components/Home/Divider';
 
 export const IndexPageTemplate = props => {
-  const { main, cards } = props;
+  const { dealers, services } = props;
 
   return (
-    <div className="container">
-      <Jumbotron {...main} />
-      <Divider cards={cards} />
-    </div>
+    <Fragment>
+      <OurDealers dealers={dealers} />
+      <Services services={services} />
+    </Fragment>
   );
 };
 
 IndexPageTemplate.propTypes = {
-  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   heading: PropTypes.string,
   subheading: PropTypes.string,
-  description: PropTypes.string,
+  description: PropTypes.string
 };
 
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
+  const { main, cards } = frontmatter;
 
   return (
-    <Layout circles>
+    <Layout
+      Header={() => {
+        return (
+          <div className="container">
+            <Jumbotron {...main} />
+            <Divider cards={cards} />
+          </div>
+        );
+      }}
+    >
       <IndexPageTemplate {...frontmatter} />
     </Layout>
   );
@@ -80,6 +91,24 @@ export const pageQuery = graphql`
             title
             description
           }
+        }
+        dealers {
+          title
+          images {
+            alt
+            image {
+              childImageSharp {
+                fluid(maxWidth: 150) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+        services {
+          title
+          description
+          button
         }
       }
     }
