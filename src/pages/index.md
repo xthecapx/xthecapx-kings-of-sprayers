@@ -12,7 +12,7 @@ main:
   button: View all sprayers
   image1:
     alt: A close-up of a paper filter filled with ground coffee
-    image: /img/products-grid3.jpg
+    image: /img/4-wheel-product-home.png
 cards:
   quality:
     title: QUALITY
@@ -23,4 +23,23 @@ cards:
   service:
     title: SERVICE
     description: Knowledgeable and friendly Customer Service Technicians available to answer product questions Custom-built sprayers available Commitment to customer satisfaction
+dealers:
+  title: OUR DEALERS
+  images: 
+    - alt: Logo One
+      image: /img/sprayers-depot-logo.png
+    - alt: Logo Two
+      image: /img/gemplers-logo.png
+    - alt: Logo Three
+      image: /img/am-leonard-logo.png
+services:
+  - title: HELP CENTER
+    description: Find answers to your technical questions, or ask a question and our technical team will provide you with answers.
+    button: Go to Help center
+  - title: WARANTY
+    description: King Sprayers warrants its products from any manufacturer defects. Buy with confidence.
+    button: Go to Help waranty policy
+  - title: HELP CENTER
+    description: Kings Sprayers are sold exclusively through a network of authorized dealers.
+    button: Become a dealer
 ---
