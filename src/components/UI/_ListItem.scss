@@ -1,0 +1,19 @@
+.kos {
+  &__menu {
+    &__item {
+      display: flex;
+      font-size: 11px;
+      color: $kos-gray-content;
+      margin-bottom: 16px;
+
+      svg {
+        font-size: 16px;
+        margin-top: -2px;
+      }
+    }
+
+    &__anchor {
+      color: $kos-gray-content;
+    }
+  }
+}

@@ -1,0 +1,53 @@
+.kos {
+  &__services {
+    padding: 62px 0 110px;
+  }
+
+  &__card {
+    &__title {
+      color: $kos-green-btn;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 23px;
+      margin-bottom: 16px;
+    }
+
+    &__description {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 21px;
+      margin-bottom: 16px;
+      min-height: 63px;
+    }
+
+    &__icon {
+      svg {
+        color: $kos-green-light-btn;
+        font-size: 30px;
+      }
+    }
+  }
+
+  &__btn {
+    &--green {
+      background: $kos-green-btn;
+      color: white;
+      font-size: 12px;
+      line-height: 18px;
+      border: 0;
+
+      svg {
+        font-size: 18px;
+      }
+
+      &:focus {
+        outline: 0;
+      }
+      
+      &:hover {
+        color: white;
+        background: $kos-green-light-btn;
+      }
+    }
+  }
+}

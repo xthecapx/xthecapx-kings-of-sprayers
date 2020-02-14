@@ -1,119 +1,79 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import YouTubeIcon from '@material-ui/icons/YouTube';
 
-import facebook from '../img/social/facebook.svg';
-import instagram from '../img/social/instagram.svg';
-import twitter from '../img/social/twitter.svg';
-import vimeo from '../img/social/vimeo.svg';
+import ListItem from './UI/ListItem';
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="container">
-        <div className="columns">
+        <div className="columns kos__footer__columns">
           <div className="column">
-            <h3>{'About king Sprayers'}</h3>
-            <p>
-              {`Kings Sprayers has been building sprayers for more than 30 years.
-
-            Serving the Lawn & Landscape, Pest Control, Agricultural, Golf &
-            Recreation, and Horticultural industries, Kings Sprayers offers high
-            quality and reliable sprayers for all your spraying needs.`}
+            <h3 className="kos__footer__title">{'About king Sprayers'}</h3>
+            <p className="kos__footer__text" style={{ marginBottom: 16 }}>
+              {`Kings Sprayers has been building sprayers for more than 30 years.`}
+            </p>
+            <p className="kos__footer__text">
+              {`Serving the Lawn & Landscape, Pest Control, Agricultural, Golf & Recreation, and Horticultural industries, Kings Sprayers offers high quality and reliable sprayers for all your spraying needs.`}
             </p>
           </div>
           <div className="column">
-            <h3>{'Products & Resources'}</h3>
+            <h3 className="kos__footer__title">{'Products & Resources'}</h3>
             <ul className="kos__menu">
-              <li className="kos__menu__item">
-                <Link to="/" className="kos__menu__anchor">
-                  {'3 Point Hitch Sprayers'}
-                </Link>
-              </li>
-              <li className="kos__menu__item">
-                <Link className="kos__menu__anchor" to="/about">
-                  {'Skid Sprayers'}
-                </Link>
-              </li>
-              <li className="kos__menu__item">
-                <Link className="kos__menu__anchor" to="/products">
-                  {'2 Wheel Sprayers'}
-                </Link>
-              </li>
-              <li className="kos__menu__item">
-                <Link className="kos__menu__anchor" to="/contact/examples">
-                  {'4 Wheel Sprayers'}
-                </Link>
-              </li>
-              <li className="kos__menu__item">
-                <Link className="kos__menu__anchor" to="/contact/examples">
-                  {'Spot Sprayers'}
-                </Link>
-              </li>
-              <li className="kos__menu__item">
-                <Link className="kos__menu__anchor" to="/contact/examples">
-                  {'Part & Accesories'}
-                </Link>
-              </li>
-              <li className="kos__menu__item">
-                <a
-                  className="kos__menu__anchor"
-                  href="/admin/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {'Product Manuals'}
-                </a>
-              </li>
+              <ListItem label="3 Point Hitch Sprayers" to="/" />
+              <ListItem label="Skid Sprayers" to="/about" />
+              <ListItem label="2 Wheel Sprayers" to="/products" />
+              <ListItem label="4 Wheel Sprayers" to="/about" />
+              <ListItem label="Spot Sprayers" to="/about" />
+              <ListItem label="Part & Accesories" to="/about" />
+              <ListItem label="Product Manuals" to="/about" />
             </ul>
           </div>
           <div className="column">
-            <h3>{'Customer Service'}</h3>
+            <h3 className="kos__footer__title">{'Customer Service'}</h3>
             <ul className="kos__menu">
-              <li className="kos__menu__item">
-                <Link to="/" className="kos__menu__anchor">
-                  {'Contact us'}
-                </Link>
-              </li>
-              <li className="kos__menu__item">
-                <Link to="/" className="kos__menu__anchor">
-                  {"FAQ's"}
-                </Link>
-              </li>
+              <ListItem label="Contact us" to="/about" />
+              <ListItem label="FAQ's" to="/about" />
             </ul>
           </div>
           <div className="column">
-            <h3>{'Connect with King Sprayers'}</h3>
-            <p>{`Stay in touch with King Sprayers by following us on social media!`}</p>
-            <div>
+            <h3 className="kos__footer__title">
+              {'Connect with King Sprayers'}
+            </h3>
+            <p
+              className="kos__footer__text"
+              style={{ marginBottom: 16 }}
+            >{`Stay in touch with King Sprayers by following us on social media!`}</p>
+            <div className="kos__logos">
               <a title="facebook" href="https://facebook.com">
-                <img
-                  src={facebook}
-                  alt="Facebook"
-                  style={{ width: '1em', height: '1em' }}
-                />
+                <FacebookIcon />
               </a>
               <a title="twitter" href="https://twitter.com">
-                <img
-                  className="fas fa-lg"
-                  src={twitter}
-                  alt="Twitter"
-                  style={{ width: '1em', height: '1em' }}
-                />
+                <TwitterIcon />
               </a>
-              <a title="vimeo" href="https://vimeo.com">
-                <img
-                  src={vimeo}
-                  alt="Vimeo"
-                  style={{ width: '1em', height: '1em' }}
-                />
+              <a title="vimeo" href="https://youtube.com">
+                <YouTubeIcon />
               </a>
             </div>
-
-            <hr />
-            <p>{'7800 N. Orange Blossom Trail, Orlando, FL 32810'}</p>
-            <p>{'Phone: (800) 228-0905 | Fax: (407) 886-1616'}</p>
-            <p>{'Email: info@kingssprayers.com'}</p>
+            <hr className="kos__footer__hr" />
+            <p className="kos__footer__text" style={{ marginBottom: 16 }}>
+              {'7800 N. Orange Blossom Trail, Orlando, FL 32810'}
+            </p>
+            <p className="kos__footer__text" style={{ marginBottom: 16 }}>
+              {'Phone: (800) 228-0905 | Fax: (407) 886-1616'}
+            </p>
+            <p className="kos__footer__text">
+              {'Email: info@kingssprayers.com'}
+            </p>
           </div>
+        </div>
+        <div className="kos__copyright">
+          <span className="kos__footer__text">
+            {'Copyright 2020 - Kings Sprayers®  |  All Rights Reserved'}
+          </span>
+          <img src="/img/logo-B&W@2x.png" className="kos__footer__img" />
         </div>
       </div>
     </footer>
