@@ -1,11 +1,11 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'gatsby';
 import Grid from '@material-ui/core/Grid';
-import BlueLogo from './Logo/Blue';
-import WhiteLogo from './Logo/White';
-import { UIContext } from '../resources/UI';
+import BlueLogo from '../Logo/Blue';
+import WhiteLogo from '../Logo/White';
+import { UIContext } from '../../resources/UI';
 
-const Navbar = ({ fixed }) => {
+const Navbar = ({ fixed, blueLogo }) => {
   const [menuStatus, setMenuStatus] = useState({
     active: false,
     navBarActiveClass: ''
@@ -43,7 +43,7 @@ const Navbar = ({ fixed }) => {
         <Grid item xs={2}>
           <div className="navbar-brand">
             <Link to="/" className="navbar-item" title="Logo">
-              {isSticky ? <BlueLogo /> : <WhiteLogo />}
+              {isSticky || blueLogo ? <BlueLogo /> : <WhiteLogo />}
             </Link>
             <div
               role="button"

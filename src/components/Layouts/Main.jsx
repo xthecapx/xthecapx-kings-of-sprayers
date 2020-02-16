@@ -2,8 +2,8 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { withPrefix } from 'gatsby';
 
-import Footer from '../Footer';
-import Navbar from '../Navbar';
+import Footer from './Footer';
+import Navbar from './Navbar';
 import useSiteMetadata from './SiteMetadata';
 
 import { UIProvider } from '../../resources/UI';
@@ -13,9 +13,11 @@ const TemplateWrapper = ({
   children,
   background = 'bg-jumbotron',
   navbarFixed,
-  Header
+  Header,
+  blueLogo
 }) => {
   const { title, description } = useSiteMetadata();
+
   return (
     <UIProvider>
       <Helmet>
@@ -54,7 +56,7 @@ const TemplateWrapper = ({
           content={`${withPrefix('/')}img/og-image.jpg`}
         />
       </Helmet>
-      <Navbar fixed={navbarFixed} />
+      <Navbar fixed={navbarFixed} blueLogo={blueLogo} />
       {Header && (
         <header className={`navbar-gutter ${background}`}>
           <Header />

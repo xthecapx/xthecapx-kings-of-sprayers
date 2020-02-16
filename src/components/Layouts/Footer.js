@@ -3,7 +3,7 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 
-import ListItem from './UI/ListItem';
+import ListItem from '../UI/ListItem';
 
 const Footer = () => {
   return (

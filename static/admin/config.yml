@@ -131,17 +131,6 @@ collections:
             }
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Body', name: 'body', widget: 'markdown' }
-      - file: 'src/pages/sprayers/index.md'
-        label: 'Sprayers'
-        name: 'sprayers'
-        fields:
-          - {
-              label: 'Template Key',
-              name: 'templateKey',
-              widget: 'hidden',
-              default: 'sprayrs-page',
-            }
-          - { label: 'Title', name: 'title', widget: 'string' }
       - file: 'src/pages/dealers/index.md'
         label: 'Dealers'
         name: 'dealers'
