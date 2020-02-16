@@ -3,15 +3,17 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
 import Layout from '../components/Layouts/Main';
-import BecomeDealer from '../components/BecomeDealer';
+import Contact from '../components/Contact';
+import Header from '../components/Contact/Header';
+import Services from '../components/Contact/Services';
 
-export const DealersPageTemplate = props => (
+export const ContactPageTemplate = props => (
   <Fragment>
-    <BecomeDealer {...props} />
+    <Contact {...props} />
   </Fragment>
 );
 
-DealersPageTemplate.propTypes = {
+ContactPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   title: PropTypes.string,
   heading: PropTypes.string,
@@ -23,21 +25,27 @@ DealersPageTemplate.propTypes = {
   })
 };
 
-const DealersPage = ({ data }) => {
+const ContactPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
+  const { form, title, description, services } = frontmatter;
 
   return (
     <Layout
       Header={() => {
-        return <div className="container">logo</div>;
+        return (
+          <div className="container">
+            <Header title={title} description={description} />
+            <Services services={services} />
+          </div>
+        );
       }}
     >
-      <DealersPageTemplate {...frontmatter} />
+      <ContactPageTemplate {...form} />
     </Layout>
   );
 };
 
-DealersPage.propTypes = {
+ContactPage.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.object
@@ -45,21 +53,26 @@ DealersPage.propTypes = {
   })
 };
 
-export default DealersPage;
+export default ContactPage;
 
 export const pageQuery = graphql`
-  query DealersPageTemplate {
-    markdownRemark(frontmatter: { templateKey: { eq: "dealers-page" } }) {
+  query ContactPageTemplate {
+    markdownRemark(frontmatter: { templateKey: { eq: "contact-page" } }) {
       frontmatter {
         title
         description
-        disclaimer
+        services {
+          title
+          content
+        }
         form {
-          company
-          email
+          title
+          disclaimer
           name
+          email
           number
-          reason
+          subject
+          message
           submit
         }
       }
