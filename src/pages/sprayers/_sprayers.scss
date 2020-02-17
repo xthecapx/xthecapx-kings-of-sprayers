@@ -1,5 +1,70 @@
+$kos-card-padding: 0 24px;
+
 .kos {
   &__sprayers {
     margin-top: 146px;
+  }
+
+  &__sprayerCard {
+    border-radius: 4px;
+    border: 1px solid $kos-gray-content;
+    margin-bottom: 2.5%;
+    margin-right: 1.25%;
+    padding: 24px;
+    width: 32.5%;
+
+    &:nth-child(3n + 3) {
+      margin-right: 0;
+    }
+
+    &__imageWrapper {
+      height: 0;
+      overflow: hidden;
+      padding-bottom: 100%;
+      width: 100%;
+    }
+
+    &__sku {
+      color: $kos-gray-content;
+      font-size: 12px;
+      line-height: 18px;
+      margin-bottom: 12px;
+    }
+
+    &__content {
+      color: $kos-blue-btn;
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 23px;
+      margin-bottom: 12px;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    .kos__pagination__icon {
+      font-size: 14px;
+    }
+
+    .rc-pagination-disabled {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .rc-pagination-item-active {
+      background-color: $kos-green-btn;
+      border-color: $kos-green-btn;
+    }
+
+    .rc-pagination-item:hover {
+      border-color: $kos-green-btn;
+
+      a {
+        color: $kos-green-btn;
+      }
+    }
   }
 }
