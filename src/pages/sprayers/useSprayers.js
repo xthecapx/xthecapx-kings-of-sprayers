@@ -1,11 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import axios from 'axios';
 import useSWR from 'swr';
 
+import { SprayersContext } from '../../resources/Sprayers';
+
 export const useSprayers = () => {
-  const [sprayers, setSprayers] = useState();
-  const [page, setPage] = useState(1);
-  const [perPage, setPerPage] = useState(9);
+  const {
+    page,
+    perPage,
+    setPage,
+    setPerPage,
+    setSprayers,
+    sprayers
+  } = useContext(SprayersContext);
   const { data, error } = useSWR(
     'https://www.sprayerdepot.com/collections/kings-sprayers?view=json',
     axios
@@ -15,16 +22,22 @@ export const useSprayers = () => {
     if (data && !sprayers) {
       setSprayers(eval(data.data));
     }
-  }, [data]);
+  }, [data, setSprayers, sprayers]);
+
+  const offset = (page - 1) * perPage;
+  const getSprayers = () => {
+    return sprayers.slice(offset, offset + perPage);
+  };
 
   return {
     error,
-    offset: (page - 1) * perPage,
+    offset,
     page,
-    pageCount: sprayers && sprayers.length ? Math.ceil(sprayers.length / perPage) : 1,
+    // pageCount: sprayers && sprayers.length ? Math.ceil(sprayers.length / perPage) : 1,
     perPage,
     setPage,
     setPerPage,
     sprayers,
+    getSprayers
   };
 };

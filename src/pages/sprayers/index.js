@@ -2,21 +2,16 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Pagination from 'rc-pagination';
+import { Link } from 'gatsby';
 import 'rc-pagination/assets/index.css';
 
 import Layout from '../../components/Layouts/Main';
 import { useSprayers } from './useSprayers';
 
 const Sprayers = () => {
-  const {
-    error,
-    offset,
-    pageCount,
-    perPage,
-    setPage,
-    sprayers
-  } = useSprayers();
+  const { error, offset, perPage, setPage, sprayers } = useSprayers();
 
   if (error) {
     return <div>failed to load</div>;
@@ -25,7 +20,9 @@ const Sprayers = () => {
     return <div>loading...</div>;
   }
 
-  console.log(sprayers);
+  const getSprayers = () => {
+    return sprayers.slice(offset, offset + perPage);
+  };
 
   return (
     <Layout navbarFixed blueLogo>
@@ -36,7 +33,7 @@ const Sprayers = () => {
           </Grid>
           <Grid item xs={9}>
             <Grid container>
-              {sprayers.slice(offset, offset + perPage).map(sprayer => (
+              {getSprayers().map(sprayer => (
                 <div key={sprayer.id} className="kos__sprayerCard">
                   <div className="kos__sprayerCard__imageWrapper">
                     <img
@@ -49,6 +46,15 @@ const Sprayers = () => {
                   </div>
                   <div className="kos__sprayerCard__content">
                     {sprayer.title}
+                  </div>
+                  <div className="kos__sprayerCard__footer">
+                    <Link
+                      className="button is-rounded kos__btn--green kos__btn--big"
+                      to={`/sprayers/details?id=${sprayer.id}`}
+                    >
+                      <span>Details</span>
+                      <ChevronRightIcon />
+                    </Link>
                   </div>
                 </div>
               ))}

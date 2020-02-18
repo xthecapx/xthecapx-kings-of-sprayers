@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import { withPrefix } from 'gatsby';
 
@@ -19,7 +19,7 @@ const TemplateWrapper = ({
   const { title, description } = useSiteMetadata();
 
   return (
-    <UIProvider>
+    <Fragment>
       <Helmet>
         <html lang="en" />
         <title>{title}</title>
@@ -64,7 +64,7 @@ const TemplateWrapper = ({
       )}
       <main>{children}</main>
       <Footer />
-    </UIProvider>
+    </Fragment>
   );
 };
 
