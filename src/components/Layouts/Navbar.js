@@ -1,11 +1,11 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'gatsby';
 import Grid from '@material-ui/core/Grid';
-import BlueLogo from './Logo/Blue';
-import WhiteLogo from './Logo/White';
-import { UIContext } from '../resources/UI';
+import BlueLogo from '../Logo/Blue';
+import WhiteLogo from '../Logo/White';
+import { UIContext } from '../../resources/UI';
 
-const Navbar = ({ fixed }) => {
+const Navbar = ({ fixed, blueLogo, blueItem }) => {
   const [menuStatus, setMenuStatus] = useState({
     active: false,
     navBarActiveClass: ''
@@ -35,7 +35,7 @@ const Navbar = ({ fixed }) => {
 
   return (
     <nav
-      className={`navbar is-transparent ${stickyClass()}`}
+      className={`navbar is-transparent ${stickyClass()} ${blueItem ? 'blue-item' : ''}`}
       role="navigation"
       aria-label="main-navigation"
     >
@@ -43,7 +43,7 @@ const Navbar = ({ fixed }) => {
         <Grid item xs={2}>
           <div className="navbar-brand">
             <Link to="/" className="navbar-item" title="Logo">
-              {isSticky ? <BlueLogo /> : <WhiteLogo />}
+              {isSticky || blueLogo ? <BlueLogo /> : <WhiteLogo />}
             </Link>
             <div
               role="button"
@@ -63,19 +63,39 @@ const Navbar = ({ fixed }) => {
             className={`navbar-menu ${menuStatus.navBarActiveClass}`}
           >
             <div className="navbar-end has-text-centered navbar-menu-container">
-              <Link className="navbar-item" to="/">
+              <Link
+                className="navbar-item"
+                to="/"
+                activeClassName="navbar-item--active"
+              >
                 Home
               </Link>
-              <Link className="navbar-item" to="/about">
+              <Link
+                className="navbar-item"
+                to="/about"
+                activeClassName="navbar-item--active"
+              >
                 About
               </Link>
-              <Link className="navbar-item" to="/sprayers">
+              <Link
+                className="navbar-item"
+                to="/sprayers"
+                activeClassName="navbar-item--active"
+              >
                 Sprayers
               </Link>
-              <Link className="navbar-item" to="/dealers">
+              <Link
+                className="navbar-item"
+                to="/dealers"
+                activeClassName="navbar-item--active"
+              >
                 Dealers
               </Link>
-              <Link className="navbar-item" to="/contact">
+              <Link
+                className="navbar-item"
+                to="/contact"
+                activeClassName="navbar-item--active"
+              >
                 Contact Us
               </Link>
               <hr className="navbar-line" />

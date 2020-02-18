@@ -26,8 +26,15 @@ const AboutPage = ({ data }) => {
 
   return (
     <Layout
+      background="bg-about-us"
       Header={() => {
-        return <div className="container"></div>;
+        return (
+          <div className="container">
+            <h2 className="kos__header__title">{'30 YEARS'}</h2>
+            <p className="kos__header__content">{`building high quality
+commercial sprayers`}</p>
+          </div>
+        );
       }}
     >
       <AboutPageTemplate {...frontmatter} />

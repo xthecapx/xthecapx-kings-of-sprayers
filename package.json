@@ -6,7 +6,9 @@
   "dependencies": {
     "@material-ui/core": "^4.9.1",
     "@material-ui/icons": "^4.9.1",
+    "axios": "^0.19.2",
     "bulma": "^0.8.0",
+    "formik": "^2.1.4",
     "gatsby": "^2.13.31",
     "gatsby-image": "^2.0.23",
     "gatsby-plugin-google-fonts": "^1.0.1",
@@ -29,10 +31,13 @@
     "netlify-cms-media-library-uploadcare": "^0.5.2",
     "node-sass": "^4.11.0",
     "prop-types": "^15.6.0",
+    "rc-pagination": "^1.21.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-helmet": "^5.2.0",
-    "uuid": "^3.2.1"
+    "swr": "^0.1.17",
+    "uuid": "^3.2.1",
+    "yup": "^0.28.1"
   },
   "keywords": [
     "gatsby"

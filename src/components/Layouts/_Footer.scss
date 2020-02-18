@@ -1,0 +1,55 @@
+.kos {
+  &__footer {
+    &__columns {
+      border-bottom: 1px solid $divider-vertical-bar;
+      margin-bottom: 0 !important;
+    }
+
+    &__title {
+      color: $divider-description;
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 21px;
+      margin-bottom: 16px;
+    }
+
+    &__text {
+      color: $divider-description;
+      font-size: 11px;
+      line-height: 16px;
+      text-align: justify;
+    }
+
+    &__hr {
+      border: 0;
+      height: 0;
+      border-top: 1px solid $divider-vertical-bar;
+      border-bottom: 1px solid $divider-vertical-bar;
+    }
+
+    &__img {
+      height: 29px;
+      width: 98px;
+    }
+  }
+
+  &__logos {
+    a {
+      margin-right: 12px;
+      height: 35px;
+      width: 35px;
+    }
+
+    svg {
+      font-size: 35px;
+      color: $divider-vertical-bar;
+    }
+  }
+
+  &__copyright {
+    align-items: center;
+    display: flex;
+    height: 60px;
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,51 @@
+.navbar-gutter {
+  padding: 150px 0;
+}
+
+.bg-jumbotron,
+.bg-contact-us,
+.bg-dealers,
+.bg-about-us {
+  background-color: $kos-blue-btn;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-jumbotron {
+  background-image: url('/img/bg-banner.png');
+}
+
+.bg-contact-us {
+  background-image: url('/img/bg-pattern-white.png');
+  background-repeat: repeat;
+  background-size: auto;
+  padding: 150px 0 70px;
+}
+
+.bg-dealers {
+  background-image: url('/img/banner-top-dealers.png');
+  height: 520px;
+}
+
+.bg-about-us {
+  background-image: url('/img/banner-top-about.png');
+}
+
+
+.bg-circles {
+  position: relative;
+
+  .circles {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    right: 0;
+  }
+}
+
+.footer {
+  background: url('/img/bg-footer.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+}

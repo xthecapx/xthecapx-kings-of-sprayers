@@ -12,26 +12,6 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: 'blog'
-    label: 'Blog'
-    folder: 'src/pages/blog'
-    create: true
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
-    fields:
-      - {
-          label: 'Template Key',
-          name: 'templateKey',
-          widget: 'hidden',
-          default: 'blog-post',
-        }
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Description', name: 'description', widget: 'text' }
-      - { label: 'Featured Post', name: 'featuredpost', widget: 'boolean' }
-      - { label: 'Featured Image', name: 'featuredimage', widget: image }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
-      - { label: 'Tags', name: 'tags', widget: 'list' }
-
   - name: 'pages'
     label: 'Pages'
     editor:
@@ -151,17 +131,6 @@ collections:
             }
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Body', name: 'body', widget: 'markdown' }
-      - file: 'src/pages/sprayers/index.md'
-        label: 'Sprayers'
-        name: 'sprayers'
-        fields:
-          - {
-              label: 'Template Key',
-              name: 'templateKey',
-              widget: 'hidden',
-              default: 'sprayrs-page',
-            }
-          - { label: 'Title', name: 'title', widget: 'string' }
       - file: 'src/pages/dealers/index.md'
         label: 'Dealers'
         name: 'dealers'
@@ -172,4 +141,58 @@ collections:
               widget: 'hidden',
               default: 'dealers-page',
             }
-          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Title', name: 'title', widget: string }
+          - { label: 'Description', name: 'description', widget: text }
+          - { label: 'Disclaimer', name: 'disclaimer', widget: string }
+          - {
+              label: 'Form',
+              name: form,
+              widget: object,
+              fields:
+                [
+                  { label: Company, name: company, widget: string },
+                  { label: Email, name: email, widget: string },
+                  { label: Name, name: name, widget: string },
+                  { label: Number, name: number, widget: string },
+                  { label: Reason, name: reason, widget: string },
+                  { label: submit, name: submit, widget: string },
+                ],
+            }
+      - file: 'src/pages/contact/index.md'
+        label: 'Contact'
+        name: 'contact'
+        fields:
+          - {
+              label: 'Template Key',
+              name: 'templateKey',
+              widget: 'hidden',
+              default: 'contact-page',
+            }
+          - { label: 'Title', name: 'title', widget: string }
+          - { label: 'Description', name: 'description', widget: text }
+          - {
+              label: Services,
+              name: 'services',
+              widget: list,
+              fields:
+                [
+                  { label: title, name: title, widget: string },
+                  { label: content, name: content, widget: text },
+                ],
+            }
+          - {
+              label: 'Form Data',
+              name: form,
+              widget: object,
+              fields:
+                [
+                  { label: Title, name: title, widget: string },
+                  { label: Disclaimer, name: disclaimer, widget: string },
+                  { label: Name, name: name, widget: string },
+                  { label: Email, name: email, widget: string },
+                  { label: Number, name: number, widget: string },
+                  { label: Subject, name: subject, widget: string },
+                  { label: Message, name: message, widget: string },
+                  { label: submit, name: submit, widget: string },
+                ],
+            }

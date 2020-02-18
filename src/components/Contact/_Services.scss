@@ -1,0 +1,25 @@
+.kos {
+  &__contactServices {
+    &__services {
+      .kos__contactServices__icon {
+        color: $kos-blue-icon;
+        font-size: 32px;
+      }
+    }
+
+    &__title {
+      color: $kos-green-btn;
+      font-size: 16px;
+      margin-bottom: 8px;
+      line-height: 23px;
+    }
+
+    &__content {
+      color: $kos-header-black;
+      font-size: 14px;
+      line-height: 21px;
+      min-height: 42px;
+      width: 45%;
+    }
+  }
+}

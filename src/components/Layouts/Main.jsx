@@ -1,23 +1,27 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import { withPrefix } from 'gatsby';
 
-import Footer from '../Footer';
-import Navbar from '../Navbar';
+import Footer from './Footer';
+import Navbar from './Navbar';
 import useSiteMetadata from './SiteMetadata';
 
 import { UIProvider } from '../../resources/UI';
 import './all.sass';
 
 const TemplateWrapper = ({
-  children,
   background = 'bg-jumbotron',
+  blueItem,
+  blueLogo,
+  children,
+  Header,
   navbarFixed,
-  Header
+  removeHeader
 }) => {
   const { title, description } = useSiteMetadata();
+
   return (
-    <UIProvider>
+    <Fragment>
       <Helmet>
         <html lang="en" />
         <title>{title}</title>
@@ -54,15 +58,15 @@ const TemplateWrapper = ({
           content={`${withPrefix('/')}img/og-image.jpg`}
         />
       </Helmet>
-      <Navbar fixed={navbarFixed} />
-      {Header && (
+      <Navbar fixed={navbarFixed} blueLogo={blueLogo} blueItem={blueItem} />
+      {!removeHeader && (
         <header className={`navbar-gutter ${background}`}>
-          <Header />
+          {Header && <Header />}
         </header>
       )}
       <main>{children}</main>
       <Footer />
-    </UIProvider>
+    </Fragment>
   );
 };
 

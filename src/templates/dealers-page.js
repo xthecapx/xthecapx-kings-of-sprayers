@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
 import Layout from '../components/Layouts/Main';
+import BecomeDealer from '../components/BecomeDealer';
 
-export const DealersPageTemplate = ({ title }) => (
-  <div>
-    <div className="full-width-image margin-top-0">{title}</div>
-  </div>
+export const DealersPageTemplate = props => (
+  <Fragment>
+    <BecomeDealer {...props} />
+  </Fragment>
 );
 
 DealersPageTemplate.propTypes = {
@@ -26,7 +27,7 @@ const DealersPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
 
   return (
-    <Layout>
+    <Layout background="bg-dealers">
       <DealersPageTemplate {...frontmatter} />
     </Layout>
   );
@@ -47,6 +48,16 @@ export const pageQuery = graphql`
     markdownRemark(frontmatter: { templateKey: { eq: "dealers-page" } }) {
       frontmatter {
         title
+        description
+        disclaimer
+        form {
+          company
+          email
+          name
+          number
+          reason
+          submit
+        }
       }
     }
   }
