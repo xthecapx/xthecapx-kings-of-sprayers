@@ -25,6 +25,14 @@ $divider-primary: #4D508C
 $divider-description: #828282
 $divider-vertical-bar: #BFBFBF
 
+$about-subtitle: #828282
+$about-subtitle-size: 14px
+$about-title1: #111360
+$about-title2: #03A62C
+$about-title-size: 42px
+$about-title-margin-bottom: 30px
+$about-value-icons: #4D508C
+
 
 // spacing
 $custom-navbar-height: 86px
@@ -106,6 +114,13 @@ footer.footer
   padding: 3rem 0rem 0rem
   background-color: transparent
 
+.is-flex-col-centered 
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+
+
 //Menu overrides
 $menu-item-color: $white-ter
 $menu-item-hover-color: $black !important
@@ -164,3 +179,6 @@ $menu-label-color: $white-ter
 @import "../Home/Jumbotron"
 @import "../Home/_Divider"
 @import "../Dealers/OurDealers"
+@import "../About/_OurDealers"
+@import "../About/_OurStory"
+@import "../About/_OurValues"
