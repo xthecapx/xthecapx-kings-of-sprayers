@@ -31,6 +31,9 @@ const ContactPage = ({ data }) => {
 
   return (
     <Layout
+      background="bg-contact-us"
+      blueLogo
+      blueItem
       Header={() => {
         return (
           <div className="container">

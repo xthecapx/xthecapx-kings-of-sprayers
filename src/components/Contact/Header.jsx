@@ -6,18 +6,11 @@ const Header = props => {
   const { title, description } = props;
 
   return (
-    <Grid
-      container
-      className="jumbotron"
-      justify="space-between"
-      alignItems="center"
-    >
-      <Grid item xs={12}>
-        <EmailIcon />
-        <h1>{title}</h1>
-        <p>{description}</p>
-      </Grid>
-    </Grid>
+    <div className="kos__contact__header">
+      <EmailIcon className="kos__contact__icon" />
+      <h1 className="kos__contact__title">{title}</h1>
+      <p className="kos__contact__disclaimer">{description}</p>
+    </div>
   );
 };
 

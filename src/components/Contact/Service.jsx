@@ -25,14 +25,14 @@ const ICONS = {
 const Service = ({ title, icon = TYPES.help, content }) => {
   const Icon = ICONS[icon];
   return (
-    <Grid item xs={3}>
-      <Grid container>
-        <Grid item xs={1}>
-          <Icon />
+    <Grid item xs={3} className="kos__contactServices__services">
+      <Grid container justify="center" alignContent="center" alignItems="center">
+        <Grid item xs={2}>
+          <Icon className="kos__contactServices__icon" />
         </Grid>
-        <Grid item xs={11}>
-          <h2>{title}</h2>
-          <p>{content}</p>
+        <Grid item xs={10}>
+          <h2 className="kos__contactServices__title">{title}</h2>
+          <p className="kos__contactServices__content">{content}</p>
         </Grid>
       </Grid>
     </Grid>

@@ -27,11 +27,7 @@ const DealersPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
 
   return (
-    <Layout
-      Header={() => {
-        return <div className="container">logo</div>;
-      }}
-    >
+    <Layout background="bg-dealers">
       <DealersPageTemplate {...frontmatter} />
     </Layout>
   );

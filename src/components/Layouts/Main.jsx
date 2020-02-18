@@ -10,11 +10,13 @@ import { UIProvider } from '../../resources/UI';
 import './all.sass';
 
 const TemplateWrapper = ({
-  children,
   background = 'bg-jumbotron',
-  navbarFixed,
+  blueItem,
+  blueLogo,
+  children,
   Header,
-  blueLogo
+  navbarFixed,
+  removeHeader
 }) => {
   const { title, description } = useSiteMetadata();
 
@@ -56,10 +58,10 @@ const TemplateWrapper = ({
           content={`${withPrefix('/')}img/og-image.jpg`}
         />
       </Helmet>
-      <Navbar fixed={navbarFixed} blueLogo={blueLogo} />
-      {Header && (
+      <Navbar fixed={navbarFixed} blueLogo={blueLogo} blueItem={blueItem} />
+      {!removeHeader && (
         <header className={`navbar-gutter ${background}`}>
-          <Header />
+          {Header && <Header />}
         </header>
       )}
       <main>{children}</main>

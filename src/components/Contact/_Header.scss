@@ -1,0 +1,27 @@
+.kos {
+  &__contact {
+    &__header {
+      text-align: center;
+      margin-bottom: 36px;
+
+      .kos__contact__icon {
+        font-size: 34px;
+      }
+    }
+
+    &__title {
+      color: $kos-green-btn;
+      font-size: 42px;
+      line-height: 62px;
+    }
+
+    &__disclaimer {
+      color: $kos-header-black;
+      font-size: 16px;
+      line-height: 23px;
+      margin: 0 auto;
+      text-align: center;
+      width: 55%;
+    }
+  }
+}

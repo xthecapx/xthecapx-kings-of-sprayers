@@ -25,7 +25,7 @@ const Sprayers = () => {
   };
 
   return (
-    <Layout navbarFixed blueLogo>
+    <Layout navbarFixed blueLogo removeHeader>
       <div className="container kos__sprayers">
         <Grid container>
           <Grid item xs={3}>
