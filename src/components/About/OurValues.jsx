@@ -9,30 +9,33 @@ export const OurValues = props => {
   const values = props.values;
 
   return (
-    <div className="values-container is-flex-col-centered" style={{backgroundImage: `url(${background})`}}>      
-      <div>
-        <p className="has-text-centered values-subtitle">{values.subtitle}</p>
-        <p className="has-text-centered values-title">{values.title}</p>
+
+    <div style={{backgroundImage: `url(${background})`}}>
+      <div className="container values-container is-flex-col-centered">      
+        <div>
+          <p className="has-text-centered values-subtitle">{values.subtitle}</p>
+          <p className="has-text-centered values-title">{values.title}</p>
+        </div>
+
+        <ul className="columns">
+          <li className="column is-hcentered">
+            <Shield className="values-icon" style={{ fontSize: 50 }} />
+            <p className="values-item-title">{values.quality.title}</p>
+            <p className="values-item-description">{values.quality.description}</p>
+          </li>
+          <li className="column is-hcentered">
+            <People className="values-icon" style={{ fontSize: 50 }} />
+            <p className="values-item-title">{values.dependability.title}</p>
+            <p className="values-item-description">{values.dependability.description}</p>
+          </li>
+          <li className="column is-hcentered">
+            <ThumbUp className="values-icon" style={{ fontSize: 50 }} />
+            <p className="values-item-title">{values.service.title}</p>
+            <p className="values-item-description">{values.service.description}</p>
+          </li>
+        </ul>
+
       </div>
-
-      <ul className="columns">
-        <li className="column is-hcentered">
-          <Shield className="values-icon" style={{ fontSize: 50 }} />
-          <p className="values-item-title">{values.quality.title}</p>
-          <p className="values-item-description">{values.quality.description}</p>
-        </li>
-        <li className="column is-hcentered">
-          <People className="values-icon" style={{ fontSize: 50 }} />
-          <p className="values-item-title">{values.dependability.title}</p>
-          <p className="values-item-description">{values.dependability.description}</p>
-        </li>
-        <li className="column is-hcentered">
-          <ThumbUp className="values-icon" style={{ fontSize: 50 }} />
-          <p className="values-item-title">{values.service.title}</p>
-          <p className="values-item-description">{values.service.description}</p>
-        </li>
-      </ul>
-
     </div>
   );
 };

@@ -6,10 +6,12 @@ import { OurStory } from "../components/about/OurStory";
 import { OurDealers } from "../components/about/OurDealers";
 import { OurValues } from "../components/about/OurValues";
 
-export const AboutPageTemplate = ({ title, content, contentComponent }) => {
+export const AboutPageTemplate = ({ story, values, dealers }) => {
   return (
     <Fragment>
-      <div>{title}</div>
+      <OurStory story={story} />
+      <OurValues values={values} />
+      <OurDealers dealers={dealers} />
     </Fragment>
   );
 };
@@ -22,7 +24,6 @@ AboutPageTemplate.propTypes = {
 
 const AboutPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
-  const { story, values, dealers } = frontmatter;
 
   return (
     <Layout
@@ -30,7 +31,7 @@ const AboutPage = ({ data }) => {
       Header={() => {
         return (
           <div className="container">
-            <h2 className="kos__header__title">{'30 YEARS'}</h2>
+            <h2 className="kos__header__title">{"30 YEARS"}</h2>
             <p className="kos__header__content">{`building high quality
 commercial sprayers`}</p>
           </div>
@@ -38,11 +39,6 @@ commercial sprayers`}</p>
       }}
     >
       <AboutPageTemplate {...frontmatter} />
-      <div className="container">
-        <OurStory story={story} />
-        <OurValues values={values} />
-        <OurDealers dealers={dealers} />
-      </div>
     </Layout>
   );
 };
