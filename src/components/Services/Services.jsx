@@ -5,7 +5,6 @@ import Service from './Service';
 import { TYPES } from './Service';
 
 const Services = ({ services }) => {
-  console.log(services);
   return (
     <div className="kos__services container">
       <div className="columns">

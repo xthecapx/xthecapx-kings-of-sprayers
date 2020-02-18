@@ -17,6 +17,7 @@ const OurDealers = ({ dealers }) => {
               <img
                 src={dealers ? dealers.images[0].image.childImageSharp.fluid.src : ''}
                 className="our-dealers__logo our-dealers__logo--sm"
+                alt="first dealer"
               />
             </div>
           </Grid>
@@ -25,6 +26,7 @@ const OurDealers = ({ dealers }) => {
               <img
                 src={dealers ? dealers.images[1].image.childImageSharp.fluid.src : ''}
                 className="our-dealers__logo"
+                alt="second dealer"
               />
             </div>
           </Grid>
@@ -33,6 +35,7 @@ const OurDealers = ({ dealers }) => {
               <img
                 src={dealers ? dealers.images[2].image.childImageSharp.fluid.src : ''}
                 className="our-dealers__logo"
+                alt="third dealer"
               />
             </div>
           </Grid>

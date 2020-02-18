@@ -3,14 +3,6 @@ import Grid from '@material-ui/core/Grid';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-import Header from './Header';
-
-function encode(data) {
-  return Object.keys(data)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join('&');
-}
-
 const SignupForm = ({ form }) => {
   const { name, company, email, number, reason, submit } = form;
   return (

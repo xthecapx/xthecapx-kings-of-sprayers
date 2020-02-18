@@ -1,5 +1,6 @@
 const _ = require('lodash')
 const path = require('path')
+const axios  = require('axios');
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 
@@ -84,4 +85,26 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       value,
     })
   }
+}
+
+exports.sourceNodes = async ({
+  actions: { createNode },
+  createContentDigest,
+}) => {
+  // get data from GitHub API at build time
+  const result = await axios(`https://www.sprayerdepot.com/collections/kings-sprayers?view=json`)
+  const resultData = eval(result.data)
+
+  // create node for build time data example in the docs
+  createNode({
+    // required fields
+    list: resultData,
+    id: `sprayers-data`,
+    parent: null,
+    children: [],
+    internal: {
+      type: `Sprayers`,
+      contentDigest: createContentDigest(resultData),
+    },
+  })
 }

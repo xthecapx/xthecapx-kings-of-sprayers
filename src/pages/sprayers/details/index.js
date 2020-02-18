@@ -1,33 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Grid from '@material-ui/core/Grid';
 
 import Layout from '../../../components/Layouts/Main';
-import { SprayersContext } from '../../../resources/Sprayers';
 
-function paramsToObject(entries) {
-  let result = {};
-  for (let entry of entries) {
-    // each 'entry' is a [key, value] tupple
-    const [key, value] = entry;
-    result[key] = value;
-  }
-  return result;
-}
-
-const Sprayers = ({ location }) => {
-  const { sprayers } = useContext(SprayersContext);
-  console.log(sprayers);
-  console.log(location);
-
+const Sprayers = ({ location, data }) => {
   const search = Object.fromEntries(
     new URLSearchParams(location.search.slice(1))
   );
 
-  if (sprayers) {
-    const sprayer = sprayers.find(sprayer => String(sprayer.id) === search.id);
-    console.log(search);
-    console.log(sprayer);
-  }
+  const sprayer = data.sprayers.list.find(
+    sprayer => String(sprayer.id) === search.id
+  );
+  console.log(sprayer);
   return (
     <Layout navbarFixed blueLogo>
       <div className="container kos__sprayers">
@@ -45,3 +29,24 @@ const Sprayers = ({ location }) => {
 };
 
 export default Sprayers;
+
+export const pageQuery = graphql`
+  query Sprayer {
+    sprayers {
+      list {
+        compare_at_price
+        available
+        description
+        featured_image
+        handle
+        id
+        tags
+        variants {
+          sku
+          title
+          id
+        }
+      }
+    }
+  }
+`;
