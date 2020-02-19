@@ -5,13 +5,19 @@ import { graphql } from 'gatsby';
 import Layout from '../../../components/Layouts/Main';
 
 const Sprayers = ({ location, data }) => {
-  const search = Object.fromEntries(
-    new URLSearchParams(location.search.slice(1))
-  );
+  const search = location.search
+    .slice(1)
+    .split('&')
+    .map(p => p.split('='))
+    .reduce((obj, pair) => {
+      const [key, value] = pair.map(decodeURIComponent);
+      return { ...obj, [key]: value };
+    }, {});
 
   const sprayer = data.sprayers.list.find(
     sprayer => String(sprayer.id) === search.id
   );
+  console.log(search)
   console.log(sprayer);
   return (
     <Layout navbarFixed blueLogo>

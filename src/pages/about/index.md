@@ -1,19 +1,49 @@
 ---
-templateKey: 'about-page'
+templateKey: "about-page"
 path: /about
 title: About our values
+story:
+  subtitle: OUR STORY
+  title: KING SPRAYERS
+  body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. At quis elit cras semper ut viverra et. Nisl, pharetra suscipit vitae lacinia. Orci ipsum lectus lectus ipsum. Rutrum cursus diam ultrices urna morbi nam. Diam risus non nisi adipiscing penatibus proin. 
+  
+  
+  In amet, ut et non sollicitudin iaculis venenatis. Ultricies et integer cum sit augue pellentesque. At morbi diam feugiat orci nisi congue duis pulvinar neque. At lacus pellentesque enim ornare a massa sit. A est in in risus amet. Fames turpis aliquam id nibh nec. Enim feugiat lorem scelerisque sed vel donec sit. Suscipit quam cursus commodo mi porttitor. Sollicitudin quam venenatis viverra sed. Pharetra, sit lobortis augue mus ullamcorper faucibus maecenas. 
+
+  
+  Volutpat tellus nunc, lorem tincidunt tincidunt vel. Turpis eget mi neque, dignissim ut nulla sagittis orci ut. Eu nullam tellus nibh feugiat lorem consectetur massa pellentesque tempor. Etiam imperdiet consectetur cursus mauris. Tristique scelerisque ut blandit sed. Mattis ornare malesuada faucibus enim turpis placerat. Ut ultricies aliquet ut sed egestas. Eget porta nec convallis scelerisque volutpat nec. Magna tincidunt ac malesuada diam vestibulum, tortor. Netus quis porta elementum risus, quam cursus. Praesent aliquam, natoque tincidunt maecenas. Sagittis ac sed sit nam ut. Consequat, sit erat quis urna at vel, aliquam egestas amet. Dis ante lobortis ullamcorper tristique."
+values:
+  subtitle: OUR
+  title: VALUES
+  quality:
+    title: QUALITY
+    description: "Kings Sprayers are made in the USA 
+    
+    Built with high-quality, brand name components"
+  dependability:
+    title: DEPENDABILITY
+    description: "Strong network of distributors, dealers and retail outlets 
+    
+    Manufacturer of professional spray equipment for more than 30 years
+    
+    Complete line of commercial sprayers"
+  service:
+    title: SERVICE
+    description: "Knowledgeable and friendly Customer Service 
+    
+    Technicians available to answer product questions 
+    
+    Custom-built sprayers available 
+    
+    Commitment to customer satisfaction"
+dealers:
+  subtitle: OUR
+  title: DEALERS
+  images:
+    - alt: Logo One
+      image: /img/gemplers-logo.png
+    - alt: Logo Two
+      image: /img/sprayers-depot-logo.png
+    - alt: Logo Three
+      image: /img/am-leonard-logo.png
 ---
-### Shade-grown coffee
-Coffee is a small tree or shrub that grows in the forest understory in its wild form, and traditionally was grown commercially under other trees that provided shade. The forest-like structure of shade coffee farms provides habitat for a great number of migratory and resident species.
-
-### Single origin
-Single-origin coffee is coffee grown within a single known geographic origin. Sometimes, this is a single farm or a specific collection of beans from a single country. The name of the coffee is then usually the place it was grown to whatever degree available.
-
-### Sustainable farming
-Sustainable agriculture is farming in sustainable ways based on an understanding of ecosystem services, the study of relationships between organisms and their environment. What grows where and how it is grown are a matter of choice and careful consideration for nature and communities.
-
-### Direct sourcing
-Direct trade is a form of sourcing practiced by some coffee roasters. Advocates of direct trade practices promote direct communication and price negotiation between buyer and farmer, along with systems that encourage and incentivize quality.
-
-### Reinvest profits
-We want to truly empower the communities that bring amazing coffee to you. That’s why we reinvest 20% of our profits into farms, local businesses and schools everywhere our coffee is grown. You can see the communities grow and learn more about coffee farming on our blog.
