@@ -17,12 +17,6 @@ export const AboutPageTemplate = ({ story, values, dealers }) => {
   );
 };
 
-AboutPageTemplate.propTypes = {
-  title: PropTypes.string.isRequired,
-  content: PropTypes.string,
-  contentComponent: PropTypes.func
-};
-
 const AboutPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
 
