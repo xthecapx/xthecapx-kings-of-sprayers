@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
 import Layout from '../components/Layouts/Main';
-import { OurStory } from '../components/about/OurStory';
-import { OurDealers } from '../components/about/OurDealers';
-import { OurValues } from '../components/about/OurValues';
+import { OurStory } from '../components/About/OurStory';
+import { OurDealers } from '../components/About/OurDealers';
+import { OurValues } from '../components/About/OurValues';
 
 export const AboutPageTemplate = ({ story, values, dealers }) => {
   return (
