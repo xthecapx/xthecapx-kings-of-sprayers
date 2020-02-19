@@ -1,10 +1,11 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
-import { graphql } from "gatsby";
-import Layout from "../components/Layouts/Main";
-import { OurStory } from "../components/about/OurStory";
-import { OurDealers } from "../components/about/OurDealers";
-import { OurValues } from "../components/about/OurValues";
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
+
+import Layout from '../components/Layouts/Main';
+import { OurStory } from '../components/about/OurStory';
+import { OurDealers } from '../components/about/OurDealers';
+import { OurValues } from '../components/about/OurValues';
 
 export const AboutPageTemplate = ({ story, values, dealers }) => {
   return (
@@ -31,7 +32,7 @@ const AboutPage = ({ data }) => {
       Header={() => {
         return (
           <div className="container">
-            <h2 className="kos__header__title">{"30 YEARS"}</h2>
+            <h2 className="kos__header__title">{'30 YEARS'}</h2>
             <p className="kos__header__content">{`building high quality
 commercial sprayers`}</p>
           </div>
@@ -48,8 +49,7 @@ AboutPage.propTypes = {
 };
 
 export default AboutPage;
-// query IndexPageTemplate {
-//   markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
+
 export const aboutPageQuery = graphql`
   query AboutPage($id: String!) {
     markdownRemark(id: { eq: $id }) {
