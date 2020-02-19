@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Grid from '@material-ui/core/Grid';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
@@ -8,11 +8,16 @@ import { Link, graphql } from 'gatsby';
 import 'rc-pagination/assets/index.css';
 
 import Layout from '../../components/Layouts/Main';
-import { useSprayers } from './useSprayers';
+
+import { SprayersContext } from '../../resources/Sprayers';
 
 const Sprayers = ({ data }) => {
-  console.log(data.sprayers.list);
-  const { setPage, getSprayers } = useSprayers();
+  const { page, perPage, setPage } = useContext(SprayersContext);
+  const offset = (page - 1) * perPage;
+
+  const getSprayers = sprayers => {
+    return sprayers.slice(offset, offset + perPage);
+  };
 
   return (
     <Layout navbarFixed blueLogo removeHeader>
