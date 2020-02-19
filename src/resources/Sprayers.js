@@ -3,7 +3,6 @@ import React, { createContext, useState } from 'react';
 export const SprayersContext = createContext({});
 
 export const SprayersProvider = ({ children }) => {
-  const [sprayers, setSprayers] = useState();
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(9);
 
@@ -13,9 +12,7 @@ export const SprayersProvider = ({ children }) => {
         page,
         perPage,
         setPage,
-        setPerPage,
-        setSprayers,
-        sprayers
+        setPerPage
       }}
     >
       {children}

@@ -1,6 +1,5 @@
 import React from 'react';
 import EmailIcon from '@material-ui/icons/Email';
-import Grid from '@material-ui/core/Grid';
 
 const Header = props => {
   const { title, description } = props;

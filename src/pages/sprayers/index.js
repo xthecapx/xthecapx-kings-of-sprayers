@@ -1,26 +1,21 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Grid from '@material-ui/core/Grid';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Pagination from 'rc-pagination';
-import { Link } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import 'rc-pagination/assets/index.css';
 
 import Layout from '../../components/Layouts/Main';
-import { useSprayers } from './useSprayers';
 
-const Sprayers = () => {
-  const { error, offset, perPage, setPage, sprayers } = useSprayers();
+import { SprayersContext } from '../../resources/Sprayers';
 
-  if (error) {
-    return <div>failed to load</div>;
-  }
-  if (!sprayers) {
-    return <div>loading...</div>;
-  }
+const Sprayers = ({ data }) => {
+  const { page, perPage, setPage } = useContext(SprayersContext);
+  const offset = (page - 1) * perPage;
 
-  const getSprayers = () => {
+  const getSprayers = sprayers => {
     return sprayers.slice(offset, offset + perPage);
   };
 
@@ -33,12 +28,13 @@ const Sprayers = () => {
           </Grid>
           <Grid item xs={9}>
             <Grid container>
-              {getSprayers().map(sprayer => (
+              {getSprayers(data.sprayers.list).map(sprayer => (
                 <div key={sprayer.id} className="kos__sprayerCard">
                   <div className="kos__sprayerCard__imageWrapper">
                     <img
                       className="kos__sprayerCard__img"
                       src={sprayer.featured_image}
+                      alt={sprayer.title}
                     />
                   </div>
                   <div className="kos__sprayerCard__sku">
@@ -60,7 +56,7 @@ const Sprayers = () => {
               ))}
             </Grid>
             <Pagination
-              total={sprayers.length + 1}
+              total={data.sprayers.list.length + 1}
               showLessItems
               prevIcon={<ArrowBackIcon className="kos__pagination__icon" />}
               nextIcon={<ArrowForwardIcon className="kos__pagination__icon" />}
@@ -78,3 +74,30 @@ const Sprayers = () => {
 };
 
 export default Sprayers;
+
+export const pageQuery = graphql`
+  query Sprayers {
+    sprayers {
+      list {
+        compare_at_price
+        available
+        description
+        featured_image
+        handle
+        id
+        tags {
+          Frame
+          Pump_Type
+          SKU
+          Tank_Size
+        }
+        title
+        variants {
+          sku
+          title
+          id
+        }
+      }
+    }
+  }
+`;

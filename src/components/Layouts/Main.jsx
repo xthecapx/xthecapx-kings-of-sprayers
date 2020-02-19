@@ -6,7 +6,6 @@ import Footer from './Footer';
 import Navbar from './Navbar';
 import useSiteMetadata from './SiteMetadata';
 
-import { UIProvider } from '../../resources/UI';
 import './all.sass';
 
 const TemplateWrapper = ({

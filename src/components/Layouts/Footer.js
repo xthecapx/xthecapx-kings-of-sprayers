@@ -73,7 +73,7 @@ const Footer = () => {
           <span className="kos__footer__text">
             {'Copyright 2020 - Kings Sprayers®  |  All Rights Reserved'}
           </span>
-          <img src="/img/logo-B&W@2x.png" className="kos__footer__img" />
+          <img src="/img/logo-B&W@2x.png" className="kos__footer__img" alt="bottom-logo" />
         </div>
       </div>
     </footer>

@@ -3,8 +3,6 @@ import EmailIcon from '@material-ui/icons/Email';
 import Grid from '@material-ui/core/Grid';
 
 const Header = props => {
-  const { image1 = {}, heading, subheading, description, button } = props;
-
   return (
     <Grid
       container
