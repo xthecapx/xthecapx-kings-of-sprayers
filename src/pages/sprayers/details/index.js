@@ -1,5 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
+import { graphql } from 'gatsby';
 
 import Layout from '../../../components/Layouts/Main';
 
@@ -40,7 +41,12 @@ export const pageQuery = graphql`
         featured_image
         handle
         id
-        tags
+        tags {
+          Frame
+          Pump_Type
+          SKU
+          Tank_Size
+        }
         variants {
           sku
           title

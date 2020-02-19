@@ -80,7 +80,12 @@ export const pageQuery = graphql`
         featured_image
         handle
         id
-        tags
+        tags {
+          Frame
+          Pump_Type
+          SKU
+          Tank_Size
+        }
         title
         variants {
           sku
