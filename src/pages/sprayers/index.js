@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import Grid from '@material-ui/core/Grid';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
@@ -19,6 +19,8 @@ const Sprayers = ({ data }) => {
     return sprayers.slice(offset, offset + perPage);
   };
 
+  console.log(data.sprayersList.list)
+
   return (
     <Layout navbarFixed blueLogo removeHeader>
       <div className="container kos__sprayers">
@@ -28,7 +30,7 @@ const Sprayers = ({ data }) => {
           </Grid>
           <Grid item xs={9}>
             <Grid container>
-              {getSprayers(data.sprayers.list).map(sprayer => (
+              {getSprayers(data.sprayersList.list).map(sprayer => (
                 <div key={sprayer.id} className="kos__sprayerCard">
                   <div className="kos__sprayerCard__imageWrapper">
                     <img
@@ -46,7 +48,7 @@ const Sprayers = ({ data }) => {
                   <div className="kos__sprayerCard__footer">
                     <Link
                       className="button is-rounded kos__btn--green kos__btn--big"
-                      to={`/sprayers/details?id=${sprayer.id}`}
+                      to={`/products/${sprayer.handle}`}
                     >
                       <span>Details</span>
                       <ChevronRightIcon />
@@ -56,7 +58,7 @@ const Sprayers = ({ data }) => {
               ))}
             </Grid>
             <Pagination
-              total={data.sprayers.list.length + 1}
+              total={data.sprayersList.list.length + 1}
               showLessItems
               prevIcon={<ArrowBackIcon className="kos__pagination__icon" />}
               nextIcon={<ArrowForwardIcon className="kos__pagination__icon" />}
@@ -76,8 +78,8 @@ const Sprayers = ({ data }) => {
 export default Sprayers;
 
 export const pageQuery = graphql`
-  query Sprayers {
-    sprayers {
+  query SprayersList {
+    sprayersList {
       list {
         compare_at_price
         available

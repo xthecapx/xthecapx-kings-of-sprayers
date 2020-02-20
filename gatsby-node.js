@@ -4,10 +4,50 @@ const axios = require('axios');
 const { createFilePath } = require('gatsby-source-filesystem');
 const { fmImagesToRelative } = require('gatsby-remark-relative-images');
 
-exports.createPages = ({ actions, graphql }) => {
+exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
 
-  return graphql(`
+  const pages = await graphql(`
+    {
+      allSprayers {
+        edges {
+          node {
+            id
+            title
+            handle
+            tags {
+              Frame
+              Pump_Type
+              Tank_Size
+            }
+            related {
+              description
+              featured_image
+              handle
+              id
+              title
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  pages.data.allSprayers.edges.forEach(edge => {
+    createPage({
+      path: `/products/${edge.node.handle}`,
+      component: path.resolve('./src/templates/product.js'),
+      context: {
+        handle: edge.node.handle,
+        id: edge.node.id,
+        related: edge.node.related,
+        tags: edge.node.tags,
+        title: edge.node.title
+      }
+    });
+  });
+
+  const staticPagesQuery = await graphql(`
     {
       allMarkdownRemark(limit: 1000) {
         edges {
@@ -17,58 +57,26 @@ exports.createPages = ({ actions, graphql }) => {
               slug
             }
             frontmatter {
-              tags
               templateKey
             }
           }
         }
       }
     }
-  `).then(result => {
-    if (result.errors) {
-      result.errors.forEach(e => console.error(e.toString()));
-      return Promise.reject(result.errors);
-    }
+  `);
 
-    const posts = result.data.allMarkdownRemark.edges;
+  const staticPages = staticPagesQuery.data.allMarkdownRemark.edges;
 
-    posts.forEach(edge => {
-      const id = edge.node.id;
-      createPage({
-        path: edge.node.fields.slug,
-        tags: edge.node.frontmatter.tags,
-        component: path.resolve(
-          `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
-        ),
-        // additional data can be passed via context
-        context: {
-          id
-        }
-      });
-    });
-
-    // Tag pages:
-    let tags = [];
-    // Iterate through each post, putting all found tags into `tags`
-    posts.forEach(edge => {
-      if (_.get(edge, `node.frontmatter.tags`)) {
-        tags = tags.concat(edge.node.frontmatter.tags);
+  staticPages.forEach(edge => {
+    const id = edge.node.id;
+    createPage({
+      path: edge.node.fields.slug,
+      component: path.resolve(
+        `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
+      ),
+      context: {
+        id
       }
-    });
-    // Eliminate duplicate tags
-    tags = _.uniq(tags);
-
-    // Make tag pages
-    tags.forEach(tag => {
-      const tagPath = `/tags/${_.kebabCase(tag)}/`;
-
-      createPage({
-        path: tagPath,
-        component: path.resolve(`src/templates/tags.js`),
-        context: {
-          tag
-        }
-      });
     });
   });
 };
@@ -92,12 +100,11 @@ exports.sourceNodes = async ({
   createContentDigest
 }) => {
   // get data from GitHub API at build time
-  const result = await axios(
+  const { data: shopifyProducts } = await axios(
     `https://www.sprayerdepot.com/collections/kings-sprayers?view=json`
   );
-  const resultData = eval(result.data);
 
-  const categories = resultData.reduce((acc, current) => {
+  const categories = shopifyProducts.reduce((acc, current) => {
     const { type } = current;
 
     if (!acc[type]) {
@@ -107,7 +114,7 @@ exports.sourceNodes = async ({
     return acc;
   }, {});
 
-  const tags = resultData.reduce((acc, current) => {
+  const tags = shopifyProducts.reduce((acc, current) => {
     const { tags } = current;
 
     tags.forEach(tag => {
@@ -115,10 +122,10 @@ exports.sourceNodes = async ({
 
       if (tagString.length === 2 && tagString[0] !== 'SKU') {
         if (!acc[tagString[0]]) {
-          acc[tagString[0]] = [tagString[1].trim()];
+          acc[tagString[0]] = tagString[1].trim();
         } else {
           if (acc[tagString[0]].indexOf(tagString[1]) === -1) {
-            acc[tagString[0]].push(tagString[1].trim());
+            acc[tagString[0]] = tagString[1].trim();
           }
         }
       }
@@ -127,7 +134,7 @@ exports.sourceNodes = async ({
     return acc;
   }, {});
 
-  const mappedData = resultData.map(result => {
+  const mappedData = shopifyProducts.map(result => {
     return {
       ...result,
       tags: result.tags.reduce((acc, currentTag) => {
@@ -142,18 +149,54 @@ exports.sourceNodes = async ({
     };
   });
 
-  // create node for build time data example in the docs
+  shopifyProducts.forEach(product => {
+    const related = shopifyProducts.filter(_product => {
+      return _product.type === product.type && product.id !== _product.id;
+    });
+
+    const tags = product.tags.reduce((acc, tag) => {
+      const tagString = tag.split(':');
+
+      if (tagString.length === 2 && tagString[0] !== 'SKU') {
+        if (!acc[tagString[0]]) {
+          acc[tagString[0]] = tagString[1].trim();
+        } else {
+          if (acc[tagString[0]].indexOf(tagString[1]) === -1) {
+            acc[tagString[0]] = tagString[1].trim();
+          }
+        }
+      }
+
+      return acc;
+    }, {});
+
+    createNode({
+      handle: product.handle,
+      id: product.id.toString(),
+      related,
+      tags,
+      title: product.title,
+      internal: {
+        type: `Sprayers`,
+        mediaType: `text/html`,
+        description: product.title,
+        content: JSON.stringify(product),
+        contentDigest: createContentDigest(product)
+      }
+    });
+  });
+
   createNode({
     list: mappedData,
     categories: Object.keys(categories),
     tagsList: Object.keys(tags),
     tags,
-    id: `sprayers-data`,
+    id: `sprayers-list`,
     parent: null,
     children: [],
     internal: {
-      type: `Sprayers`,
-      contentDigest: createContentDigest(resultData)
+      type: `SprayersList`,
+      contentDigest: createContentDigest(shopifyProducts)
     }
   });
 };
