@@ -1,22 +1,19 @@
-import React from 'react';
-import { graphql } from 'gatsby';
-import Grid from '@material-ui/core/Grid';
+import React from "react";
+import { graphql } from "gatsby";
 
-import Layout from '../components/Layouts/Main';
+import Layout from "../components/Layouts/Main";
+import { ProductOverview } from "../components/Products/ProductOverview"
+import { RelatedProducts } from "../components/Products/RelatedProducts"
 
 export default ({ data }) => {
   const { sprayers } = data;
 
-  console.log(sprayers);
   return (
     <Layout navbarFixed blueLogo>
       <div className="container kos__sprayers">
-        <Grid container>
-          <Grid item xs={3}></Grid>
-          <Grid item xs={9}>
-            {sprayers.title}
-          </Grid>
-        </Grid>
+        <ProductOverview sprayers={sprayers} />
+        {/* details */}
+        <RelatedProducts sprayers={sprayers} />
       </div>
     </Layout>
   );
@@ -28,6 +25,17 @@ export const query = graphql`
       id
       title
       handle
+      description
+      type
+      variants {
+        sku
+        name
+        weight
+        weight_unit
+        weight_in_unit
+        weight_with_unit
+      }
+      featured_image
       related {
         description
         featured_image

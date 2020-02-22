@@ -1,8 +1,8 @@
-const _ = require('lodash');
-const path = require('path');
-const axios = require('axios');
-const { createFilePath } = require('gatsby-source-filesystem');
-const { fmImagesToRelative } = require('gatsby-remark-relative-images');
+const _ = require("lodash");
+const path = require("path");
+const axios = require("axios");
+const { createFilePath } = require("gatsby-source-filesystem");
+const { fmImagesToRelative } = require("gatsby-remark-relative-images");
 
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
@@ -15,6 +15,17 @@ exports.createPages = async ({ actions, graphql }) => {
             id
             title
             handle
+            description
+            type
+            variants {
+              sku
+              name
+              weight
+              weight_unit
+              weight_in_unit
+              weight_with_unit
+            }
+            featured_image
             tags {
               Frame
               Pump_Type
@@ -36,13 +47,17 @@ exports.createPages = async ({ actions, graphql }) => {
   pages.data.allSprayers.edges.forEach(edge => {
     createPage({
       path: `/products/${edge.node.handle}`,
-      component: path.resolve('./src/templates/product.js'),
+      component: path.resolve("./src/templates/product.js"),
       context: {
         handle: edge.node.handle,
         id: edge.node.id,
         related: edge.node.related,
         tags: edge.node.tags,
-        title: edge.node.title
+        title: edge.node.title,
+        description: edge.node.description,
+        type: edge.node.type,
+        variants: edge.node.variants,
+        featured_image: edge.node.featured_image
       }
     });
   });
@@ -118,9 +133,9 @@ exports.sourceNodes = async ({
     const { tags } = current;
 
     tags.forEach(tag => {
-      const tagString = tag.split(':');
+      const tagString = tag.split(":");
 
-      if (tagString.length === 2 && tagString[0] !== 'SKU') {
+      if (tagString.length === 2 && tagString[0] !== "SKU") {
         if (!acc[tagString[0]]) {
           acc[tagString[0]] = tagString[1].trim();
         } else {
@@ -138,7 +153,7 @@ exports.sourceNodes = async ({
     return {
       ...result,
       tags: result.tags.reduce((acc, currentTag) => {
-        const prop = currentTag.split(':');
+        const prop = currentTag.split(":");
 
         if (prop.length === 2) {
           acc[prop[0]] = prop[1];
@@ -155,9 +170,9 @@ exports.sourceNodes = async ({
     });
 
     const tags = product.tags.reduce((acc, tag) => {
-      const tagString = tag.split(':');
+      const tagString = tag.split(":");
 
-      if (tagString.length === 2 && tagString[0] !== 'SKU') {
+      if (tagString.length === 2 && tagString[0] !== "SKU") {
         if (!acc[tagString[0]]) {
           acc[tagString[0]] = tagString[1].trim();
         } else {
@@ -176,6 +191,10 @@ exports.sourceNodes = async ({
       related,
       tags,
       title: product.title,
+      description: product.description,
+      type: product.type,
+      variants: product.variants,
+      featured_image: product.featured_image,
       internal: {
         type: `Sprayers`,
         mediaType: `text/html`,
